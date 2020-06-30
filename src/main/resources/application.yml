@@ -1,0 +1,26 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    prefix: classpath:/templates/
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot-redis?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    #type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update #指定为update，每次启动项目检测表结构有变化的时候会新增字段，表不存在时会新建，如果指定create，则每次启动项目都会清空数据并删除表，再新建
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #按字段名字建表
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl #驼峰自动映射为下划线格式
+    show-sql: true
+  redis:
+      host: localhost
+      port: 6379
+server:
+  port: 80
